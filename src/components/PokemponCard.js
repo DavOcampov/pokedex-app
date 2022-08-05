@@ -1,11 +1,12 @@
 import React from 'react'
 import { StyleSheet, View, Text, Image, TouchableWithoutFeedback } from 'react-native'
 import getColorByPokemonType from '../utils/getColorByPokemonType';
+import { useNavigation } from '@react-navigation/native';
 
 export default function PokemponCard(props) {
     const { pokemonI } = props;
 
-    const pokemonColor = getColorByPokemonType(pokemonI.type)
+    const pokemonColor = getColorByPokemonType(pokemonI.type) /* Ejecutamos la funcion enviado el tipo */
     const bgStyles = { backgroundColor: pokemonColor, ...styles.bgStyles}
 
     const goToPokemon = () => {
@@ -16,7 +17,7 @@ export default function PokemponCard(props) {
             <View style={styles.card}>
                 <View style={styles.spacing}>
                     <View style={bgStyles}>
-                        <Text style={styles.number}>#{`${pokemonI.order}`.padStart(3, 0)}</Text>
+                        <Text style={styles.number}>#{`${pokemonI.order}`.padStart(3, 0) /* Muestra el nuemoro con 3 digitos */}</Text>
                         <Text style={styles.name}>{pokemonI.name}</Text>
                         <Image source={{ uri: pokemonI.image }} style={styles.image} />
                     </View>

@@ -1,5 +1,6 @@
-export const API_HOST = "https://pokeapi.co/api/v2/"
+export const API_HOST = "https://pokeapi.co/api/v2/"; /* Api a consumir */
 
+/* Arreglo con colores por tipo de pokemon */
 export const POKEMON_TYPE_COLORS = {
     normal: "#A8A878",
     fighting: "#C03028",

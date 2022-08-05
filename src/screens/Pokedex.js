@@ -1,29 +1,29 @@
-import { View } from 'react-native'
-import React, { useState, useEffect } from 'react'
-import { getPokemonsApi, getPokemonsDetailsByUrlApi } from '../api/pokemon'
+import { View } from 'react-native';
+import React, { useState, useEffect } from 'react'; /* useEffect Se ejecuta cuando se monta el componente, useState guarda un estado y cuando se modifique se renderice en tiempo real */
+import { getPokemonsApi, getPokemonsDetailsByUrlApi } from '../api/pokemon'; /* Exportamos las funciones */
 import PokemonList from '../components/PokemonList';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { Searchbar } from 'react-native-paper';
 
 export default function Pokedex() {
-  const [masterData, setMasterData] = useState([]);
   const [pokemons, setPokemons] = useState([]);
   const [nextUrl, setNextUrl] = useState(null);
 
-  useEffect((text) => {
+  useEffect(() => {
     (async () => {
-      await loadPokemons(text)
-    })
+      await loadPokemons()
+    })()  /* Generamos funcion anonima autoejecutable */
   }, [])
 
-  const loadPokemons = async (text) => {
+  /* Funcion para traer la lista de pokemons */
+  const loadPokemons = async () => {
     try {
-      const response = await getPokemonsApi(nextUrl);
+      const response = await getPokemonsApi(nextUrl); /* Pasamos url para traer nuevos pokemos */
       setNextUrl(response.next)
       const pokemonsArray = [];
-      for await (const pokemon of response.results) {
-        const pokemonDetails = await getPokemonsDetailsByUrlApi(pokemon.url)
 
+      for await (const pokemon of response.results) {
+        const pokemonDetails = await getPokemonsDetailsByUrlApi(pokemon.url) /* Pasamos la url que cargara la informacion detallada del pokemon */
+
+        /* Añadimos los nuevos datos seleccionados a arreglo */
         pokemonsArray.push({
           id: pokemonDetails.id,
           name: pokemonDetails.name,
@@ -31,34 +31,16 @@ export default function Pokedex() {
           order: pokemonDetails.order,
           image: pokemonDetails.sprites.other['official-artwork'].front_default
         })
-
-        if (text) {
-          const newData = pokemonsArray.filter((item) => {
-            const itemData =
-              item.name
-                ? (item.name).toUpperCase()
-                : "".toUpperCase();
-            const textData = text.toUpperCase();
-            return itemData.indexOf(textData) > -1;
-          });
-          setPokemons([...pokemons, ...newData]);
-        } else {
-          setPokemons([...pokemons, ...pokemonsArray]);
-        }
       }
-      
+      setPokemons([...pokemons, ...pokemonsArray]); /* (Expres Operator)) seteamos el nuevo arreglo con el arreglo antetior o actual */
     } catch {
       console.error(error)
     }
   }
 
   return (
-    <SafeAreaView>
-      <Searchbar
-        placeholder="Buscar"
-        onChangeText={(text) => loadPokemons(text)}
-      />
+    <View>
       <PokemonList pokemonsL={pokemons} loadPokemons={loadPokemons} isNext={nextUrl} />
-    </SafeAreaView>
+    </View>
   )
 }

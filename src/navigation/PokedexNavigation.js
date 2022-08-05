@@ -8,7 +8,7 @@ const Stack = createNativeStackNavigator();
 export default function PokedexNavigation() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="pokedexN" component={PokedexScreen} options={{title: "", headerTransparent: false}}/>
+      <Stack.Screen name="pokedexN" component={PokedexScreen} options={{title: "Pokedex", headerTransparent: false}}/>
       <Stack.Screen name="pokemonN" component={PokemonScreen} options={{title: "Pokemon"}}/>
     </Stack.Navigator>
   )

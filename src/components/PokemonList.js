@@ -4,23 +4,24 @@ import PokemponCard from './PokemponCard';
 
 export default function PokemonList(props) {
     const { pokemonsL, loadPokemons, isNext } = props;
+    /* Funcion para cargar mas y nuevos pokemons a la lista */
     const loadMore = () => {
         loadPokemons();
     }
     return (
         <FlatList
-            data={pokemonsL}
-            numColumns={2}
-            showsHorizontalScrollIndicator={false}
+            data={pokemonsL} /* Props array de los pokemons */
+            numColumns={2} /* Items por fila */
+            showsHorizontalScrollIndicator={false} /* Ocultar barra del scroll */
             showsVerticalScrollIndicator={false}
-            keyExtractor={(pokemon) => String(pokemon.id)}
-            renderItem={({ item }) => <PokemponCard pokemonI={item} />}
-            contentContainerStyle={styles.flatListContentContainer}
-            onEndReached={isNext && loadMore}
-            onEndReachedThreshold={0.1}
+            keyExtractor={(pokemon) => String(pokemon.id)} /* ID del pokemon */
+            renderItem={({ item }) => <PokemponCard pokemonI={item} />} /* Rendirizacion del componente */
+            contentContainerStyle={styles.flatListContentContainer} /* Estilos del flat */
+            onEndReached={isNext && loadMore} /* Cuando llege al final de la lista ejecuta la funcion */
+            onEndReachedThreshold={0.1} /* Cuando este a punto de llegar al final de la lista se ejecuta el load */
             ListFooterComponent={
                 isNext && (
-                    <ActivityIndicator size={50} color="#AEAEAE" style={styles.spinner} />
+                    <ActivityIndicator size={50} color="red" style={styles.spinner} />
                 )
             }
         />
