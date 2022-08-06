@@ -11,17 +11,18 @@ export default function PokemonList(props) {
     return (
         <FlatList
             data={pokemonsL} /* Props array de los pokemons */
-            numColumns={2} /* Items por fila */
+            numColumns={2} /* Numero de filas por pantalla */
             showsHorizontalScrollIndicator={false} /* Ocultar barra del scroll */
             showsVerticalScrollIndicator={false}
             keyExtractor={(pokemon) => String(pokemon.id)} /* ID del pokemon */
             renderItem={({ item }) => <PokemponCard pokemonI={item} />} /* Rendirizacion del componente */
             contentContainerStyle={styles.flatListContentContainer} /* Estilos del flat */
-            onEndReached={isNext && loadMore} /* Cuando llege al final de la lista ejecuta la funcion */
+            onEndReached={isNext && loadMore} /* Cuando llege al final de la lista ejecuta la funcion, si no hay datos en isNext no se ejecutara */
             onEndReachedThreshold={0.1} /* Cuando este a punto de llegar al final de la lista se ejecuta el load */
             ListFooterComponent={
+                /* Si ay datos en el isNext se renderiza el componente spinner */
                 isNext && (
-                    <ActivityIndicator size={50} color="red" style={styles.spinner} />
+                    <ActivityIndicator size={40} color="red" style={styles.spinner} />
                 )
             }
         />
@@ -31,7 +32,7 @@ export default function PokemonList(props) {
 const styles = StyleSheet.create({
     flatListContentContainer: {
         paddingHorizontal: 5,
-        marginTop: Platform.OS === "android" ? 10 : 5,
+        marginTop: Platform.OS === "android" ? 20 : 5,
     },
     spinner: {
         marginTop: 20,

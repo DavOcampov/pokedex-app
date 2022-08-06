@@ -5,19 +5,20 @@ import { useNavigation } from '@react-navigation/native';
 
 export default function PokemponCard(props) {
     const { pokemonI } = props;
+    const navigation = useNavigation();
 
     const pokemonColor = getColorByPokemonType(pokemonI.type) /* Ejecutamos la funcion enviado el tipo */
     const bgStyles = { backgroundColor: pokemonColor, ...styles.bgStyles}
 
     const goToPokemon = () => {
-        console.log(`Vamos al pokemon: ${pokemonI.name}`)
+        navigation.navigate("pokemonN", {id: pokemonI.id})
     }
     return (
         <TouchableWithoutFeedback onPress={goToPokemon}>
             <View style={styles.card}>
                 <View style={styles.spacing}>
                     <View style={bgStyles}>
-                        <Text style={styles.number}>#{`${pokemonI.order}`.padStart(3, 0) /* Muestra el nuemoro con 3 digitos */}</Text>
+                        <Text style={styles.number}>#{`${pokemonI.id}`.padStart(3, 0) /* Muestra el nuemoro con 3 digitos */}</Text>
                         <Text style={styles.name}>{pokemonI.name}</Text>
                         <Image source={{ uri: pokemonI.image }} style={styles.image} />
                     </View>

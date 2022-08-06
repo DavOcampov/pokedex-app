@@ -1,7 +1,8 @@
 import { View } from 'react-native';
 import React, { useState, useEffect } from 'react'; /* useEffect Se ejecuta cuando se monta el componente, useState guarda un estado y cuando se modifique se renderice en tiempo real */
-import { getPokemonsApi, getPokemonsDetailsByUrlApi } from '../api/pokemon'; /* Exportamos las funciones */
+import { getPokemonsApi, getPokemonsDetailsByUrlApi } from '../api/pokemonApi'; /* Exportamos las funciones */
 import PokemonList from '../components/PokemonList';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function Pokedex() {
   const [pokemons, setPokemons] = useState([]);
@@ -39,8 +40,8 @@ export default function Pokedex() {
   }
 
   return (
-    <View>
+    <SafeAreaView>
       <PokemonList pokemonsL={pokemons} loadPokemons={loadPokemons} isNext={nextUrl} />
-    </View>
+    </SafeAreaView>
   )
 }
