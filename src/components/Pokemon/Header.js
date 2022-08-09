@@ -10,7 +10,7 @@ export default function Header(props) {
 
   return (
     <>
-      <View style={bgStyle}>
+      <View style={bgStyle}/>
         <SafeAreaView style={style.content}>
           <View style={style.header}>
             <Text style={style.name}>{capitalize(name)}</Text>
@@ -20,13 +20,12 @@ export default function Header(props) {
             <Image source={{ uri: image }} style={style.image} />
           </View>
         </SafeAreaView>
-      </View>
     </>
   );
 }
 
 const style = StyleSheet.create({
-  gb: {
+  bg: {
     width: "100%",
     height: 400,
     position: "absolute",
@@ -37,14 +36,14 @@ const style = StyleSheet.create({
 
   content: {
     marginHorizontal: 20,
-    marginTop: 30,
+    marginTop: 50,
   },
 
   header: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "flex-end",
-    paddingTop: 40
+    paddingTop: 40,
   },
 
   name: {
@@ -62,12 +61,12 @@ const style = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    top: 30,
+    top: 0,
   },
 
   image: {
     width: 250,
-    height: 250,
-    resizeMode: "contain"
+    height: 300,
+    resizeMode: "contain",
   },
 });

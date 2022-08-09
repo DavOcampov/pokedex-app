@@ -30,7 +30,7 @@ export default function Pokedex() {
           name: pokemonDetails.name,
           type: pokemonDetails.types[0].type.name,
           order: pokemonDetails.order,
-          image: pokemonDetails.sprites.other['official-artwork'].front_default
+          image: pokemonDetails.sprites.other['official-artwork'].front_default,
         })
       }
       setPokemons([...pokemons, ...pokemonsArray]); /* (Expres Operator)) seteamos el nuevo arreglo con el arreglo antetior o actual */
