@@ -1,14 +1,11 @@
-import { View, Text } from 'react-native'
-import React from 'react'
-import LoginForm from '../components/Auth/LoginForm'
-import UserData from '../components/Auth/UserData'
+import { View, Text } from "react-native";
+import React from "react";
+import LoginForm from "../components/Auth/LoginForm";
+import UserData from "../components/Auth/UserData";
+import useAuth from "../Hooks/useAuth";
 
 export default function Acount() {
-  const auth = null
+  const { auth } = useAuth();
 
-  return (
-    <View>
-      {auth ? <UserData/> : <LoginForm/>}
-    </View>
-  )
+  return <View>{auth ? <UserData /> : <LoginForm />}</View>;
 }

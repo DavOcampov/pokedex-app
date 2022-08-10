@@ -1,6 +1,8 @@
 export const user = {
-    usernam: "cetre",
-    password: "123456"
+    username: "cetre",
+    password: "123456",
+    rol: "Admin",
+    status: 0
 }
 
 export const userDetails = {
