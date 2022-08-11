@@ -14,7 +14,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { user, userDetails } from "../../utils/userDB";
 import { Ionicons } from "@expo/vector-icons";
-import useAuth from "../../Hooks/useAuth";
+import useAuth from "../../hooks/useAuth";
 
 export default function LoginForm() {
   const [error, setError] = useState("");
@@ -33,9 +33,7 @@ export default function LoginForm() {
         if (password == user.password) {
           if (user.rol == "Admin") {
             if (user.status == 0) {
-              console.log("Logeado...");
-              console.log(userDetails);
-              login(userDetails);
+              login(userDetails); /* Enviamos los detalles del usuario al context */
             } else {
               setload(false);
               setError("Usuario inactivo");

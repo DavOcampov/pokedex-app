@@ -18,33 +18,24 @@ export default function userData() {
           <ItemMenu
             title={"Nombre"}
             text={`${auth.firstName} ${auth.lastName}`}
-          >
-            Hola
-          </ItemMenu>
-          <ItemMenu title={"Username"} text={`${auth.username}`}>
-            Hola
-          </ItemMenu>
-          <ItemMenu title={"Email"} text={`${auth.username}`}>
-            Hola
-          </ItemMenu>
-          <ItemMenu title={"Total Favoritos"} text={`0 Pokemos`}>
-            Hola
-          </ItemMenu>
+          ></ItemMenu>
+          <ItemMenu title={"Username"} text={`${auth.username}`}></ItemMenu>
+          <ItemMenu title={"Email"} text={`${auth.email}`}></ItemMenu>
+          <ItemMenu title={"Total Favoritos"} text={`0 Pokemos`}></ItemMenu>
         </View>
       </View>
-      <View style={{alignItems: "center"}}>
-      <Button
-        icon="logout"
-        mode="contained"
-        style={styles.button}
-        color="#2e68db"
-        contentStyle={{ height: 50 }}
-        onPress={logout}
-      >
-        Desconectarse
-      </Button>
+      <View style={{ alignItems: "center" }}>
+        <Button
+          icon="logout"
+          mode="contained"
+          style={styles.button}
+          color="#2e68db"
+          contentStyle={{ height: 50 }}
+          onPress={logout}
+        >
+          Desconectarse
+        </Button>
       </View>
-      
     </View>
   );
 }

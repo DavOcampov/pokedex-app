@@ -1,4 +1,5 @@
 export const API_HOST = "https://pokeapi.co/api/v2/"; /* Api a consumir */
+export const FAVORITE_STORAGE = "favorites"; /* Constate para guardar favoritos */
 
 /* Arreglo con colores por tipo de pokemon */
 export const POKEMON_TYPE_COLORS = {
