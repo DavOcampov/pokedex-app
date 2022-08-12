@@ -5,6 +5,7 @@ import useAuth from "../hooks/useAuth";
 import { getPkemonDetailsApi } from "../api/pokemonApi";
 import PokemonList from "../components/PokemonList";
 import { useFocusEffect } from "@react-navigation/native";
+import NoLogged from "../components/NoLogged";
 
 export default function Favorite(props) {
   const { router } = props;
@@ -39,7 +40,7 @@ export default function Favorite(props) {
   )
 
   return !auth ? (
-    <Text>Usuario no logeado</Text>
+    <NoLogged/>
   ) : (
     <PokemonList pokemonsL={pokemonFav} />
   );

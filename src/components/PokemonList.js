@@ -11,7 +11,7 @@ export default function PokemonList(props) {
     return (
         <FlatList
             data={pokemonsL} /* Props array de los pokemons */
-            numColumns={2} /* Numero de filas por pantalla */
+            numColumns={4} /* Numero de filas por pantalla */
             showsHorizontalScrollIndicator={false} /* Ocultar barra del scroll */
             showsVerticalScrollIndicator={false}
             keyExtractor={(pokemon) => String(pokemon.id)} /* ID del pokemon */

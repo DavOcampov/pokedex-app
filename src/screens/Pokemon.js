@@ -19,7 +19,7 @@ export default function Pokemon(props) {
   useEffect(() => {
     navigation.setOptions({
       headerRight: () => auth && <Favotite id={pokemon?.id} />,
-      headerLeft: () => (
+      /* headerLeft: () => (
         <Icon
           name="arrow-left"
           color="#FFF"
@@ -27,7 +27,7 @@ export default function Pokemon(props) {
           style={{ marginLeft: 5 }}
           onPress={() => navigation.goBack()}
         />
-      ),
+      ), */
     });
   }, [navigation, params, pokemon]);
 

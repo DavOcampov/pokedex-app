@@ -47,12 +47,12 @@ const styles = StyleSheet.create({
         right: 10,
         top: 10,
         color: "#fff",
-        fontSize: 11
+        fontSize: 10,
     },
     name: {
         color: "#fff",
         fontWeight: "bold",
-        fontSize: 15,
+        fontSize: 10,
         paddingTop: 10,
         textTransform: 'capitalize'
     },
@@ -60,8 +60,8 @@ const styles = StyleSheet.create({
         position: "absolute",
         bottom: 2,
         right: 2,
-        width: 90,
-        height: 90
+        width: 70,
+        height: 70
     },
 
 })
